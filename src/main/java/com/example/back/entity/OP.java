@@ -1,5 +1,6 @@
 package com.example.back.entity;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -34,8 +35,8 @@ public class OP {
     @OneToOne
     private Produto produto;
 
-    private Date inicio;
-    private Date termino;
+    private LocalDateTime inicio;
+    private LocalDateTime termino;
 
     @Column(nullable = false)
     private Double quantidadeProd;

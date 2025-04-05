@@ -8,8 +8,10 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import com.example.back.exceptions.OP.OPAlreadyExistsException;
+import com.example.back.exceptions.OP.OPAlreadyFinishedException;
 import com.example.back.exceptions.OP.OPCantBeDeletedException;
 import com.example.back.exceptions.OP.OPNotFoundException;
+import com.example.back.exceptions.produtos.ProdutoNotFoundException;
 
 import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
@@ -46,5 +48,25 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         body.put("status", HttpStatus.CONFLICT.value());
         
         return new ResponseEntity<>(body, HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(ProdutoNotFoundException.class)
+    public ResponseEntity<Object> handleProdutoNotFound(ProdutoNotFoundException ex, WebRequest request) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", LocalDateTime.now());
+        body.put("message", ex.getMessage());
+        body.put("status", HttpStatus.NOT_FOUND.value());
+        
+        return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(OPAlreadyFinishedException.class)
+    public ResponseEntity<Object> handleOPAlreadyFinished(OPAlreadyFinishedException ex, WebRequest request) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", LocalDateTime.now());
+        body.put("message", ex.getMessage());
+        body.put("status", HttpStatus.BAD_REQUEST.value());
+        
+        return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
     }
 }
