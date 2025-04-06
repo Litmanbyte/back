@@ -73,7 +73,7 @@ networks:
   default:
     name: producao-network
 ```
-## ⚙️ Configuração da Aplicação Spring Boot
+## ⚙️ Configuração application.properties
 ```
 # Configuração do Banco de Dados
 spring.datasource.url=jdbc:postgresql://localhost:5432/producao_db
@@ -88,3 +88,4 @@ keycloak.resource=backend-app
 keycloak.credentials.secret=sua-chave-secreta
 keycloak.public-client=true
 ```
+## ⚙️ Configuração do Keycloak Localhost:9090
