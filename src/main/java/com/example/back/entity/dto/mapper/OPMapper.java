@@ -1,37 +1,62 @@
 package com.example.back.entity.dto.mapper;
 
 import com.example.back.entity.OP;
+import com.example.back.entity.Produto;
 import com.example.back.entity.dto.op.OPRequestDTO;
 import com.example.back.entity.dto.op.OPResponseDTO;
+import com.example.back.entity.dto.op.OPResponseDTO.ItemOPSimplesDTO;
+import com.example.back.entity.dto.op.OPResponseDTO.ProdutoSimplesDTO;
+import com.example.back.exceptions.produtos.ProdutoNotFoundException;
+import com.example.back.repository.ProdutoRepository;
+import com.example.back.service.OPService;
 
-import org.mapstruct.*;
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
-@Mapper(componentModel = "spring",
-        imports = {LocalDateTime.class})
 @Component
-public interface OPMapper {
+@RequiredArgsConstructor
+public class OPMapper {
 
-    // ------------------- Request DTOs -------------------
-    @Mapping(target = "id", ignore = true)
-    @Mapping(target = "produto", ignore = true)
-    @Mapping(target = "itens", ignore = true)
-    @Mapping(target = "inicio", expression = "java(opRequest.getInicio() != null ? opRequest.getInicio() : LocalDateTime.now())")
-    OP toEntity(OPRequestDTO opRequest);
+    private final ProdutoRepository produtoRepository;
 
-    @Mapping(target = "produto", source = "produtoId", qualifiedByName = "mapProdutoFromId")
-    OP toEntityWithProduto(OPRequestDTO opRequest);
+    public OP toEntity(OPRequestDTO dto) {
+        Optional<Produto> p = produtoRepository.findById(dto.getProdutoId());
+        if (!p.isPresent()){
+            throw new ProdutoNotFoundException(dto.getProdutoId());
+        }
+        OP op = new OP();
+        op.setProduto(p.get());
+        op.setQuantidadeProd(dto.getQuantidadeProd());
+        op.setNumeroOP(dto.getNumeroOP());
+        op.setLote(dto.getLote());
+        op.setInicio(dto.getInicio());  // pode estar null
+        op.setTermino(dto.getTermino()); // pode estar null
+        return op;
+    }
 
-    // ------------------- Response DTOs -------------------
-    @Mapping(target = "status", source = ".", qualifiedByName = "mapStatus")
-    @Mapping(target = "produto", qualifiedByName = "mapProdutoDTO")
-    OPResponseDTO toResponseDTO(OP op);
+    public OPResponseDTO toResponseDTO(OP op) {
+        ProdutoSimplesDTO produtoDTO = new ProdutoSimplesDTO(
+            op.getProduto().getName(),
+            op.getProduto().getMarca()
+        );
 
-    List<OPResponseDTO> toResponseDTOList(List<OP> ops);
+        // Caso você ainda não tenha itens ligados, retorna uma lista vazia por enquanto
+        List<ItemOPSimplesDTO> itens = Collections.emptyList();
 
-
-    
+        return new OPResponseDTO(
+            op.getId(),
+            op.getNumeroOP(),
+            op.getLote(),
+            op.getInicio(),
+            op.getTermino(),
+            op.getQuantidadeProd(),
+            produtoDTO,
+            itens
+        );
+    }
 }

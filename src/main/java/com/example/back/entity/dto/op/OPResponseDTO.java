@@ -41,4 +41,10 @@ public class OPResponseDTO {
         String nome,
         Double quantidade
     ){}
+
+    public record MatPrimaSimplesDTO(
+        Long id,
+        String name,
+        String unidadeMedida
+    ) {}
 }

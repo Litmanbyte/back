@@ -70,7 +70,7 @@ public class OPService {
 
     public List<OPResponseDTO> listarPorPeriodo(LocalDate inicio, LocalDate fim) {
         LocalDateTime start = inicio.atStartOfDay();
-        LocalDateTime end = fim.atTime(23, 59, 59);
+        LocalDateTime end = fim.atTime(23, 59, 59);//considera até o ultimo segundo da data passada como fim
         
         return opRepository.findByInicioBetween(start, end).stream()
                 .map(opMapper::toResponseDTO)

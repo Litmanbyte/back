@@ -5,14 +5,18 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class OPRequestDTO {
 
-    @NotNull(message = "Quantidade  é obrigatório")
+    @NotNull(message = "Produto é obrigatório")
     private Long produtoId;
     
     @Positive(message = "Quantidade deve ser positiva")

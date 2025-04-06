@@ -11,6 +11,7 @@ import com.example.back.exceptions.OP.OPAlreadyExistsException;
 import com.example.back.exceptions.OP.OPAlreadyFinishedException;
 import com.example.back.exceptions.OP.OPCantBeDeletedException;
 import com.example.back.exceptions.OP.OPNotFoundException;
+import com.example.back.exceptions.mp.MatPrimaNotFoundException;
 import com.example.back.exceptions.produtos.ProdutoNotFoundException;
 
 import java.time.LocalDateTime;
@@ -68,5 +69,15 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         body.put("status", HttpStatus.BAD_REQUEST.value());
         
         return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(MatPrimaNotFoundException.class)
+    public ResponseEntity<Object> handleMatPrimaNotFound(MatPrimaNotFoundException ex, WebRequest request) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", LocalDateTime.now());
+        body.put("message", ex.getMessage());
+        body.put("status", HttpStatus.NOT_FOUND.value());
+        
+        return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
     }
 }

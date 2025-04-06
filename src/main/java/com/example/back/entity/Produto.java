@@ -2,16 +2,15 @@ package com.example.back.entity;
 
 import java.util.List;
 
-import com.example.back.entity.mp.MatPrima;
+import com.example.back.entity.mp.ItemMatPrima;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -46,13 +45,8 @@ public class Produto {
     @Column(nullable = false)
     private String fotoRotulo;
 
-    @ManyToMany
-    @JoinTable(
-        name = "item_matprima",
-        joinColumns = @JoinColumn(name = "item_id"),
-        inverseJoinColumns = @JoinColumn(name = "mp_id")
-    )
-    private List<MatPrima> materiasPrimas;
+    @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
+    private List<ItemMatPrima> materiasPrimas;
 
 
 }
