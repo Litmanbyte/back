@@ -10,9 +10,9 @@ public class ItemMatPrimaMapper {
 
     public ItemMatPrimaResponseDTO toResponseDTO(ItemMatPrima item) {
         return new ItemMatPrimaResponseDTO(
-            item.getId(),
+         //   item.getId(),
             new MatPrimaSimplesDTO(
-                item.getMateriaPrima().getId(),
+              //  item.getMateriaPrima().getId(),
                 item.getMateriaPrima().getName(),
                 item.getMateriaPrima().getUnidadeMedida()
             ),

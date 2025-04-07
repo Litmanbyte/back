@@ -11,6 +11,7 @@ import com.example.back.exceptions.OP.OPAlreadyExistsException;
 import com.example.back.exceptions.OP.OPAlreadyFinishedException;
 import com.example.back.exceptions.OP.OPCantBeDeletedException;
 import com.example.back.exceptions.OP.OPNotFoundException;
+import com.example.back.exceptions.mp.ItemMatPrimaNotFoundException;
 import com.example.back.exceptions.mp.MatPrimaNotFoundException;
 import com.example.back.exceptions.produtos.ProdutoNotFoundException;
 
@@ -73,6 +74,16 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(MatPrimaNotFoundException.class)
     public ResponseEntity<Object> handleMatPrimaNotFound(MatPrimaNotFoundException ex, WebRequest request) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", LocalDateTime.now());
+        body.put("message", ex.getMessage());
+        body.put("status", HttpStatus.NOT_FOUND.value());
+        
+        return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(ItemMatPrimaNotFoundException.class)
+    public ResponseEntity<Object> handleItensNotFound(ItemMatPrimaNotFoundException ex, WebRequest request) {
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("timestamp", LocalDateTime.now());
         body.put("message", ex.getMessage());

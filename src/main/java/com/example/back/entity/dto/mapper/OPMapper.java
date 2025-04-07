@@ -6,6 +6,7 @@ import com.example.back.entity.dto.op.OPRequestDTO;
 import com.example.back.entity.dto.op.OPResponseDTO;
 import com.example.back.entity.dto.op.OPResponseDTO.ItemOPSimplesDTO;
 import com.example.back.entity.dto.op.OPResponseDTO.ProdutoSimplesDTO;
+import com.example.back.entity.dto.produto.ItemMatPrimaResponseDTO;
 import com.example.back.exceptions.produtos.ProdutoNotFoundException;
 import com.example.back.repository.ProdutoRepository;
 import com.example.back.service.OPService;
@@ -23,6 +24,7 @@ import java.util.Optional;
 public class OPMapper {
 
     private final ProdutoRepository produtoRepository;
+    private final ItemMatPrimaMapper itemMatPrimaMapper;
 
     public OP toEntity(OPRequestDTO dto) {
         Optional<Produto> p = produtoRepository.findById(dto.getProdutoId());
@@ -45,8 +47,13 @@ public class OPMapper {
             op.getProduto().getMarca()
         );
 
-        // Caso você ainda não tenha itens ligados, retorna uma lista vazia por enquanto
-        List<ItemOPSimplesDTO> itens = Collections.emptyList();
+        List<ItemMatPrimaResponseDTO> itens = produtoRepository
+                                        .findById(op.getProduto().getId())
+                                        .orElseThrow(() -> new ProdutoNotFoundException(op.getProduto().getId()))
+                                        .getMateriasPrimas()
+                                        .stream()
+                                        .map(itemMatPrimaMapper::toResponseDTO) // Usando method reference
+                                        .toList();     
 
         return new OPResponseDTO(
           //  op.getId(),
