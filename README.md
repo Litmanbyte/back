@@ -5,7 +5,8 @@
 - Docker 20.10+
 - Java 21
 - JDK instalado
-- IDE para desenvolvimento Spring Boot (IntelliJ, Eclipse, etc.)
+- IDE para desenvolvimento Spring Boot (IntelliJ, VS Code, Eclipse, etc.)
+- Postman
 - Portas 5432, 5050 e 9090 disponíveis
 
 ## 🐳 Docker Compose para o app
@@ -82,10 +83,6 @@ spring.datasource.password=admin123
 spring.jpa.hibernate.ddl-auto=update
 
 # Configuração Keycloak
-keycloak.auth-server-url=http://localhost:9090
-keycloak.realm=producao-realm
-keycloak.resource=backend-app
-keycloak.credentials.secret=sua-chave-secreta
-keycloak.public-client=true
+spring.security.oauth2.resourceserver.jwt.issuer-uri=http://localhost:9090/realms/seu-realm
 ```
-## ⚙️ Configuração do Keycloak Localhost:9090
+## ⚙️ Configuração interna do Keycloak Localhost:9090
