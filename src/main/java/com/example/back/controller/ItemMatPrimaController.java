@@ -3,7 +3,8 @@ package com.example.back.controller;
 
 import com.example.back.entity.dto.produto.ItemMatPrimaRequestDTO;
 import com.example.back.entity.dto.produto.ItemMatPrimaResponseDTO;
-import com.example.back.service.ItemMatPrimaService;
+import com.example.back.service.mp.ItemMatPrimaService;
+
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

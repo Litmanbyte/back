@@ -2,7 +2,8 @@ package com.example.back.controller;
 
 import com.example.back.entity.dto.mp.MatPrimaRequestDTO;
 import com.example.back.entity.dto.mp.MatPrimaResponseDTO;
-import com.example.back.service.MatPrimaService;
+import com.example.back.service.mp.MatPrimaService;
+
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

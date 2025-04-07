@@ -11,6 +11,7 @@ import com.example.back.exceptions.OP.OPAlreadyExistsException;
 import com.example.back.exceptions.OP.OPAlreadyFinishedException;
 import com.example.back.exceptions.OP.OPCantBeDeletedException;
 import com.example.back.exceptions.OP.OPNotFoundException;
+import com.example.back.exceptions.laudo.LaudoNotFoundException;
 import com.example.back.exceptions.legislacao.LegislacaoNotFoundException;
 import com.example.back.exceptions.mp.ItemMatPrimaNotFoundException;
 import com.example.back.exceptions.mp.MatPrimaNotFoundException;
@@ -95,6 +96,16 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(LegislacaoNotFoundException.class)
     public ResponseEntity<Object> handleLegislacaoNotFound(LegislacaoNotFoundException ex, WebRequest request){
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", LocalDateTime.now());
+        body.put("message", ex.getMessage());
+        body.put("status", HttpStatus.NOT_FOUND.value());
+        
+        return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(LaudoNotFoundException.class)
+    public ResponseEntity<Object> handleLaudoNotFound(LaudoNotFoundException ex, WebRequest request){
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("timestamp", LocalDateTime.now());
         body.put("message", ex.getMessage());
