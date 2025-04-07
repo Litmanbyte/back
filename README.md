@@ -5,7 +5,8 @@
 - Docker 20.10+
 - Java 21
 - JDK instalado
-- IDE para desenvolvimento Spring Boot (IntelliJ, Eclipse, etc.)
+- IDE para desenvolvimento Spring Boot (IntelliJ, VS Code, Eclipse, etc.)
+- Postman
 - Portas 5432, 5050 e 9090 disponíveis
 
 ## 🐳 Docker Compose para o app
