@@ -3,7 +3,7 @@ package com.example.back.entity.dto.produto;
 import java.util.List;
 
 public record ProdutoResponseDTO(
-    Long id,
+  //  Long id,
     String name,
     String marca,
     Double preço,

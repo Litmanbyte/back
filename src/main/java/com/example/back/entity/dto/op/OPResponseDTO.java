@@ -16,7 +16,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class OPResponseDTO {
-    private Long id;
+    //private Long id;
     private Long numeroOP;
     private Long lote;
     

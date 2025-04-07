@@ -49,7 +49,7 @@ public class OPMapper {
         List<ItemOPSimplesDTO> itens = Collections.emptyList();
 
         return new OPResponseDTO(
-            op.getId(),
+          //  op.getId(),
             op.getNumeroOP(),
             op.getLote(),
             op.getInicio(),

@@ -40,7 +40,7 @@ public class ProdutoMapper {
             List.of();
         
         return new ProdutoResponseDTO(
-            produto.getId(),
+          //  produto.getId(),
             produto.getName(),
             produto.getMarca(),
             produto.getPreço(),
