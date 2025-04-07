@@ -82,10 +82,6 @@ spring.datasource.password=admin123
 spring.jpa.hibernate.ddl-auto=update
 
 # Configuração Keycloak
-keycloak.auth-server-url=http://localhost:9090
-keycloak.realm=producao-realm
-keycloak.resource=backend-app
-keycloak.credentials.secret=sua-chave-secreta
-keycloak.public-client=true
+spring.security.oauth2.resourceserver.jwt.issuer-uri=http://localhost:9090/realms/seu-realm
 ```
-## ⚙️ Configuração do Keycloak Localhost:9090
+## ⚙️ Configuração interna do Keycloak Localhost:9090
