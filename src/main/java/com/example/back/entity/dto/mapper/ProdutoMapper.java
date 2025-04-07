@@ -32,6 +32,7 @@ public class ProdutoMapper {
         return produto;
     }
 
+    //TODO colocar no retorno da lista o lote da materia prima
     public ProdutoResponseDTO toResponseDTO(Produto produto) {
         List<ItemMatPrimaResponseDTO> itensDTO = produto.getMateriasPrimas() != null ?
             produto.getMateriasPrimas().stream()
