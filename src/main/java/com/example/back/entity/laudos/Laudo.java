@@ -16,10 +16,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @MappedSuperclass 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
 @Setter
+@Getter
 public abstract class Laudo {
 
     @Id

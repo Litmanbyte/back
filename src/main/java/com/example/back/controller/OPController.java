@@ -23,6 +23,7 @@ public class OPController {
 
     private final OPService opService;
     private final OPMapper opMapper;
+    //TODO trazer a materia prima com laudo, ter uma ativa de cada mp obriagatoriamente
 
     @PostMapping
     public ResponseEntity<OPResponseDTO> criarOP(@Valid @RequestBody OPRequestDTO opRequest) {
@@ -62,7 +63,7 @@ public class OPController {
         return ResponseEntity.ok(response);
     }
 
-    @PutMapping("/{id}/finalizar")
+    @PatchMapping("/{id}/finalizar")
     public ResponseEntity<OPResponseDTO> finalizarOP(@PathVariable Long id) {
         OPResponseDTO response = opService.finalizarOP(id);
         return ResponseEntity.ok(response);
