@@ -6,10 +6,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import java.text.MessageFormat;
-
 import com.example.back.security.CustomJwt;
-import com.nimbusds.jose.proc.SecurityContext;
 
 @RestController
 @CrossOrigin(

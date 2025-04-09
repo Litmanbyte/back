@@ -4,18 +4,14 @@ import com.example.back.entity.OP;
 import com.example.back.entity.Produto;
 import com.example.back.entity.dto.op.OPRequestDTO;
 import com.example.back.entity.dto.op.OPResponseDTO;
-import com.example.back.entity.dto.op.OPResponseDTO.ItemOPSimplesDTO;
 import com.example.back.entity.dto.op.OPResponseDTO.ProdutoSimplesDTO;
 import com.example.back.entity.dto.produto.ItemMatPrimaResponseDTO;
 import com.example.back.exceptions.produtos.ProdutoNotFoundException;
 import com.example.back.repository.ProdutoRepository;
-import com.example.back.service.OPService;
-
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Component;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 

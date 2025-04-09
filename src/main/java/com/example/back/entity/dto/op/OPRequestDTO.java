@@ -2,7 +2,6 @@ package com.example.back.entity.dto.op;
 
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;

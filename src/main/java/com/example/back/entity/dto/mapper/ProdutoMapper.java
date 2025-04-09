@@ -3,7 +3,6 @@ package com.example.back.entity.dto.mapper;
 import com.example.back.entity.Produto;
 import com.example.back.entity.dto.produto.ProdutoRequestDTO;
 import com.example.back.entity.dto.produto.ProdutoResponseDTO;
-import com.example.back.entity.mp.ItemMatPrima;
 import com.example.back.entity.dto.produto.ItemMatPrimaResponseDTO;
 import com.example.back.repository.mp.MatPrimaRepository;
 import lombok.RequiredArgsConstructor;
