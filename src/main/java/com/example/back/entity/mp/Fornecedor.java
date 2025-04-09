@@ -29,6 +29,7 @@ public class Fornecedor {
     private String email;
     private String endereco;
     private String fone;
+    private String fotoDocVerificacao;
     //talvez cnpj, verificar se um fornecedor usa varias
 
 }

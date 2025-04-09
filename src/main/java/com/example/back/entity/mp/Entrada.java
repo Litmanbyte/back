@@ -47,4 +47,7 @@ public class Entrada {
 
     @Column(nullable = false)
     private String lote;
+
+    @Column(nullable = false)
+    private String nf;
 }
