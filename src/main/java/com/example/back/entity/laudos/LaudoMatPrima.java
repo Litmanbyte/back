@@ -24,5 +24,10 @@ public class LaudoMatPrima extends Laudo{
     @OneToOne
     private Entrada entrada;
     
+    @Override
+    public String toString() {
+        return this.entrada.getLote(); 
+    }
+
     
 }

@@ -17,4 +17,5 @@ public interface EntradaRepository extends JpaRepository<Entrada, Long>{
     
     boolean existsByLote(String lote);
     
+    List<Entrada> findByMatPrimaId(Long materiaPrimaId);
 }

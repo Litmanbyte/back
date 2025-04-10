@@ -72,4 +72,8 @@ public class EntradaService {
     public List<Entrada> buscarPorPeriodo(Date inicio, Date fim) {
         return entradaRepository.findByDataEntradaBetween(inicio, fim);
     }
+
+    public List<Entrada> buscarPorMateriaPrima(Long materiaPrimaId) {
+        return entradaRepository.findByMatPrimaId(materiaPrimaId);
+    }
 }

@@ -39,11 +39,6 @@ public class EntradaController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Entrada>> listarTodos() {
-        return ResponseEntity.ok(entradaService.listarTodos());
-    }
-
-    @GetMapping("/paginado")
     public ResponseEntity<List<EntradaResponseDTO>> listarTodosPaginaveis() {
         List<EntradaResponseDTO> response = entradaService.listarTodos().stream()
                 .map(EntradaMapper::toResponseDTO)
@@ -91,4 +86,10 @@ public class EntradaController {
         estoqueService.atualizarEstoque(entrada.getLaudo(), quantidade);
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping("/materia-prima/{materiaPrimaId}")
+    public ResponseEntity<List<Entrada>> buscarPorMateriaPrima(@PathVariable Long materiaPrimaId) {
+        return ResponseEntity.ok(entradaService.buscarPorMateriaPrima(materiaPrimaId));
+    }
+
 }

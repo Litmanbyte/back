@@ -4,7 +4,6 @@ import com.example.back.entity.Produto;
 import com.example.back.entity.dto.produto.ProdutoRequestDTO;
 import com.example.back.entity.dto.produto.ProdutoResponseDTO;
 import com.example.back.entity.dto.produto.ItemMatPrimaResponseDTO;
-import com.example.back.repository.mp.MatPrimaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +14,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ProdutoMapper {
 
-    private final MatPrimaRepository matPrimaRepository;
     private final ItemMatPrimaMapper itemMatPrimaMapper;
 
     public Produto toEntity(ProdutoRequestDTO dto) {

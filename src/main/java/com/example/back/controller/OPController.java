@@ -1,6 +1,5 @@
 package com.example.back.controller;
 
-import com.example.back.entity.dto.mapper.OPMapper;
 import com.example.back.entity.dto.op.OPRequestDTO;
 import com.example.back.entity.dto.op.OPResponseDTO;
 import com.example.back.service.OPService;
@@ -22,7 +21,6 @@ import java.util.List;
 public class OPController {
 
     private final OPService opService;
-    private final OPMapper opMapper;
     //TODO trazer a materia prima com laudo, ter uma ativa de cada mp obriagatoriamente
 
     @PostMapping
