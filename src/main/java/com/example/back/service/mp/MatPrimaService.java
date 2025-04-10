@@ -48,6 +48,13 @@ public class MatPrimaService {
         return matPrimaMapper.toResponseDTO(matPrima);
     }
 
+    @Transactional(readOnly = true)
+    public MatPrima buscarPorId(Long id) {
+        MatPrima matPrima = matPrimaRepository.findById(id)
+                .orElseThrow(() -> new MatPrimaNotFoundException(id));
+        return matPrima;
+    }
+
     @Transactional
     public MatPrimaResponseDTO update(Long id, MatPrimaRequestDTO dto) {
         MatPrima matPrima = matPrimaRepository.findById(id)
