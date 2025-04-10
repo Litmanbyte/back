@@ -6,7 +6,6 @@ import com.example.back.entity.mp.Fornecedor;
 
 public class FornecedorMapper {
 
-    // Converte RequestDTO -> Entidade (para criação)
     public static Fornecedor toEntity(FornecedorRequestDTO dto) {
         Fornecedor fornecedor = new Fornecedor();
         fornecedor.setName(dto.getNome());
@@ -17,7 +16,6 @@ public class FornecedorMapper {
         return fornecedor;
     }
 
-    // Converte Entidade -> ResponseDTO (para leitura)
     public static FornecedorResponseDTO toResponseDTO(Fornecedor fornecedor) {
         FornecedorResponseDTO dto = new FornecedorResponseDTO();
         dto.setNome(fornecedor.getName());
@@ -28,7 +26,6 @@ public class FornecedorMapper {
         return dto;
     }
 
-    // Atualiza Entidade com dados do DTO (para atualização)
     public static void updateEntity(FornecedorRequestDTO dto, Fornecedor fornecedor) {
         fornecedor.setName(dto.getNome());
         fornecedor.setEmail(dto.getEmail());

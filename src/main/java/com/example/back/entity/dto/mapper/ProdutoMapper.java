@@ -33,7 +33,7 @@ public class ProdutoMapper {
     public ProdutoResponseDTO toResponseDTO(Produto produto) {
         List<ItemMatPrimaResponseDTO> itensDTO = produto.getMateriasPrimas() != null ?
             produto.getMateriasPrimas().stream()
-                .map(itemMatPrimaMapper::toResponseDTO)
+                .map(itemMatPrimaMapper::toResponseDTOSemLaudo)
                 .collect(Collectors.toList()) :
             List.of();
         

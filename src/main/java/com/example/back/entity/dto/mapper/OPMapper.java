@@ -48,7 +48,7 @@ public class OPMapper {
                                         .orElseThrow(() -> new ProdutoNotFoundException(op.getProduto().getId()))
                                         .getMateriasPrimas()
                                         .stream()
-                                        .map(itemMatPrimaMapper::toResponseDTO) // Usando method reference                                        
+                                        .map(itemMatPrimaMapper::toResponseDTOComLaudo) // Usando method reference                                        
                                         .toList();     
         
         return new OPResponseDTO(

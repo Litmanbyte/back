@@ -38,11 +38,9 @@ public class ItemMatPrimaMapper {
     
     
 
-    public ItemMatPrimaResponseDTO toResponseDTO(ItemMatPrima item) {
+    public ItemMatPrimaResponseDTO toResponseDTOComLaudo(ItemMatPrima item) {
         return new ItemMatPrimaResponseDTO(
-         //   item.getId(),
             new MatPrimaSimplesDTO(
-              //  item.getMateriaPrima().getId(),
                 item.getMateriaPrima().getName(),
                 item.getMateriaPrima().getUnidadeMedida()
             ),
@@ -50,4 +48,16 @@ public class ItemMatPrimaMapper {
             buscarLaudo(item)
         );
     }
+    
+    public ItemMatPrimaResponseDTO toResponseDTOSemLaudo(ItemMatPrima item) {
+        return new ItemMatPrimaResponseDTO(
+            new MatPrimaSimplesDTO(
+                item.getMateriaPrima().getName(),
+                item.getMateriaPrima().getUnidadeMedida()
+            ),
+            item.getQuantidadeNecessaria(),
+            null
+        );
+    }
+    
 }

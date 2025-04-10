@@ -42,13 +42,13 @@ public class ItemMatPrimaService {
         item.setQuantidadeNecessaria(dto.quantidadeNecessaria());
         
         ItemMatPrima saved = itemMatPrimaRepository.save(item);
-        return itemMatPrimaMapper.toResponseDTO(saved);
+        return itemMatPrimaMapper.toResponseDTOSemLaudo(saved);
     }
 
     @Transactional(readOnly = true)
     public List<ItemMatPrimaResponseDTO> findByProdutoId(Long produtoId) {
         return itemMatPrimaRepository.findByProdutoId(produtoId).stream()
-                .map(itemMatPrimaMapper::toResponseDTO)
+                .map(itemMatPrimaMapper::toResponseDTOSemLaudo)
                 .toList();
     }
 
@@ -56,7 +56,7 @@ public class ItemMatPrimaService {
     public ItemMatPrimaResponseDTO findById(Long id) {
         ItemMatPrima item = itemMatPrimaRepository.findById(id)
                 .orElseThrow(() -> new ItemMatPrimaNotFoundException(id));
-        return itemMatPrimaMapper.toResponseDTO(item);
+        return itemMatPrimaMapper.toResponseDTOSemLaudo(item);
     }
 
     @Transactional
@@ -68,7 +68,7 @@ public class ItemMatPrimaService {
         item.setQuantidadeNecessaria(dto.quantidadeNecessaria());
         
         ItemMatPrima updated = itemMatPrimaRepository.save(item);
-        return itemMatPrimaMapper.toResponseDTO(updated);
+        return itemMatPrimaMapper.toResponseDTOSemLaudo(updated);
     }
 
     @Transactional
