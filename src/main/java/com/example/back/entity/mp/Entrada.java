@@ -2,6 +2,9 @@ package com.example.back.entity.mp;
 
 import java.util.Date;
 
+import com.example.back.entity.laudos.LaudoMatPrima;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,6 +33,8 @@ public class Entrada {
     @Column(nullable = false)
     private Double quantidade;
 
+    @OneToOne(mappedBy = "entrada", cascade = CascadeType.ALL)
+    private LaudoMatPrima laudo;
 
     @OneToOne
     @JoinColumn(name="fornecedor_id")

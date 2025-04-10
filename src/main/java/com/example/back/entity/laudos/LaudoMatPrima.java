@@ -23,5 +23,6 @@ public class LaudoMatPrima extends Laudo{
     @JoinColumn(name="mp_id")
     @OneToOne
     private Entrada entrada;
-
+    
+    
 }

@@ -33,6 +33,12 @@ public class FornecedorService {
         return FornecedorMapper.toResponseDTO(fornecedor);
     }
 
+    public Fornecedor findById(Long id) {
+        Fornecedor fornecedor = fornecedorRepository.findById(id)
+            .orElseThrow(() -> new FornecedorNotFoundException(id));
+        return fornecedor;
+    }
+
     @Transactional
     public FornecedorResponseDTO atualizarFornecedor(Long id, FornecedorRequestDTO dto) {
         Fornecedor fornecedor = fornecedorRepository.findById(id)

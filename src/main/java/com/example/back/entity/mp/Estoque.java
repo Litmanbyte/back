@@ -33,5 +33,6 @@ public class Estoque {
     @JoinColumn(name = "laudo_mp_id")
     @OneToOne
     private LaudoMatPrima laudoMatPrima;
+    
 
 }
